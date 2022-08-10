@@ -1,0 +1,25 @@
+.category-card {
+  width: 250px;
+  height: 300px;
+}
+.category-card .category-card-icon {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: rgba(117, 105, 248, 0.3294117647) !important;
+  color: #fff;
+}
+
+.category-card-flat .category-card-icon {
+  height: 70px;
+  width: 70px;
+  font-size: 2.5rem;
+  background-color: rgba(117, 105, 248, 0.3294117647) !important;
+  color: #fff;
+}
+
+.expense-card .expense-icon {
+  border-radius: 50%;
+  background-color: rgba(117, 105, 248, 0.3294117647) !important;
+  color: #fff;
+}/*# sourceMappingURL=CategoriesAndExpenses.css.map */

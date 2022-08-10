@@ -1,0 +1,33 @@
+.grid-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-areas: "nav" "main";
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 1fr;
+}
+
+.nav-container {
+  grid-area: "nav";
+  background-color: #e3e3e3;
+}
+.nav-container .nav-title {
+  font-size: 2.5rem;
+}
+.nav-container .goal-title {
+  font-size: 1.5rem;
+}
+.nav-container .add-goal {
+  text-transform: uppercase;
+  font-size: 1rem;
+  border: none;
+}
+.nav-container .add-goal .add-icon {
+  font-size: 1rem;
+}
+
+.main-container {
+  grid-area: "main";
+}
+.main-container .main-title {
+  font-size: 1rem;
+}/*# sourceMappingURL=Habits.css.map */
