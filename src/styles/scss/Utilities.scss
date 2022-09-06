@@ -12,3 +12,21 @@ $text-light: #fffffe;
 $primary-color: #7569f8;
 $primary-color-light: #7569f854;
 $secondary-color: #e45858;
+
+.app {
+  background-color: rgb(230, 230, 230);
+}
+
+.sticky-top {
+  top: 3em;
+}
+.btn-add {
+  background-color: white;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+}
+
+.btn-add:hover {
+  background-color: $primary-color;
+  color: white;
+}

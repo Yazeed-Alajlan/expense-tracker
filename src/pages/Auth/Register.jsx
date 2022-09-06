@@ -12,7 +12,8 @@ const Register = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
-
+  const { logout } = useAuth();
+  logout();
   const { register } = useAuth();
 
   const navigate = useNavigate();
@@ -52,14 +53,6 @@ const Register = () => {
           {error && <div className="card">{error}</div>}
 
           <form className="container d-flex-column align-items-center gap-1">
-            {/* <input
-              type="text"
-              ref={nameRef}
-              id="name"
-              placeholder="Name"
-              maxLength="60"
-              required
-            /> */}
             <input
               type="text"
               ref={emailRef}

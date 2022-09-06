@@ -1,5 +1,11 @@
 @use "Utilities";
 
+.main-card {
+  background-color: rgba(255, 255, 255, 0.293);
+}
+.expense-card-top-section {
+  transition: transform 5s ease-in-out;
+}
 .category-card {
   width: 250px;
   height: 300px;
@@ -27,4 +33,7 @@
     background-color: Utilities.$primary-color-light !important;
     color: #fff;
   }
+}
+.expense-card:hover {
+  background-color: #2b2c340d !important;
 }

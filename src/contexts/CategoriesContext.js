@@ -26,64 +26,81 @@ export function useCategories() {
 export function CategoriesProvider({ children }) {
   const categoriesTypes = [
     {
-      value: 1,
+      id: 1,
+      value: "Resturansts",
       name: "Resturansts",
       icon: <FaUtensils />,
-      max: 3000,
+      max: 500,
     },
     {
-      value: 2,
+      id: 2,
+      value: "Fast Food",
       name: "Fast Food",
       icon: <FaHamburger />,
       max: 300,
     },
     {
-      value: 3,
+      id: 3,
+      value: "Coffee",
       name: "Coffee",
       icon: <FaCoffee />,
       max: 400,
     },
     {
-      value: 4,
+      id: 4,
+      value: "Grocery",
       name: "Grocery",
       icon: <FaShoppingCart />,
-      max: 2500,
+      max: 600,
     },
     {
-      value: 5,
+      id: 5,
+      value: "Bills",
       name: "Bills",
       icon: <FaReceipt />,
       max: 1000,
     },
     {
-      value: 6,
+      id: 6,
+      value: "TV",
       name: "TV",
       icon: <FaTv />,
-      max: 1500,
+      max: 250,
     },
     {
-      value: 7,
+      id: 7,
+      value: "Gas",
       name: "Gas",
       icon: <FaGasPump />,
-      max: 1325,
+      max: 250,
     },
     {
-      value: 8,
+      id: 8,
+      value: "Cloths",
       name: "Cloths",
       icon: <FaTshirt />,
-      max: 2500,
+      max: 500,
     },
     {
-      value: 9,
+      id: 9,
+      value: "Shopping",
       name: "Shopping",
       icon: <FaShoppingBag />,
-      max: 3000,
+      max: 1000,
     },
     {
-      value: 10,
+      id: 10,
+      value: "Transportation",
       name: "Transportation",
       icon: <FaRoute />,
-      max: 900,
+      max: 250,
+    },
+    {
+      id: 11,
+      value: "sddsds",
+      name: "Transportation",
+      icon: <FaRoute />,
+      max: 9999,
     },
   ];
 
@@ -93,9 +110,43 @@ export function CategoriesProvider({ children }) {
   function getCategories() {
     return categories;
   }
+  function getCategoryByName(name) {
+    return categories.find((category) => category.name === name);
+  }
 
   function getCategoryExpenses(name) {
     return getExpenses().filter((expense) => expense.category === name);
+  }
+
+  function getCategoryAmountByDate(name, date) {
+    return getExpenses().filter(
+      (expense) =>
+        expense.category === name && expense.date.substring(0, 7) === date
+    );
+  }
+  function getAllCategoriesAmountByDate(date) {
+    const amount = getExpenses()
+      .filter((expense) => expense.date.substring(0, 7) === date)
+      .reduce((total, expense) => total + expense.amount, 0);
+
+    return amount;
+  }
+
+  function getAllCategoriesAmountByDateSortedByCategory(date) {
+    const amountList = [];
+    getCategories().map((data) => {
+      let sum = 0;
+      getCategoryAmountByDate(data.name, date).forEach((element) => {
+        sum += element.amount;
+      });
+      amountList.push(sum);
+    });
+    return amountList;
+  }
+
+  // DATE
+  function getAllCategoriesMaximum() {
+    return categoriesTypes.reduce((total, category) => total + category.max, 0);
   }
 
   // async function addCategory(name, max, uid) {
@@ -107,7 +158,15 @@ export function CategoriesProvider({ children }) {
   //   });
   // }
 
-  const value = { getCategories, getCategoryExpenses };
+  const value = {
+    getCategories,
+    getCategoryByName,
+    getCategoryExpenses,
+    getCategoryAmountByDate,
+    getAllCategoriesAmountByDate,
+    getAllCategoriesMaximum,
+    getAllCategoriesAmountByDateSortedByCategory,
+  };
 
   return (
     <CategoriesContext.Provider value={value}>

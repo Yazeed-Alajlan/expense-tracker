@@ -1,25 +1,12 @@
-import React, { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import React from "react";
+import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "contexts/AuthContext";
-import SideBar from "components/Sidebar/SideBar";
+import SideBar from "components/Sidebar/Sidebar";
 
 const PrivateRoute = () => {
   const { currentUser } = useAuth();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!currentUser) {
-      navigate("/login", { replace: true });
-    }
-  }, []);
-
-  return (
-    <>
-      <SideBar>
-        <Outlet />
-      </SideBar>
-    </>
-  );
+  return <>{currentUser ? <Outlet /> : <Navigate to="/login" />}</>;
 };
 
 export default PrivateRoute;

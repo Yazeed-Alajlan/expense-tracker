@@ -1,1 +1,18 @@
-/*# sourceMappingURL=Utilities.css.map */
+.app {
+  background-color: rgb(230, 230, 230);
+}
+
+.sticky-top {
+  top: 3em;
+}
+
+.btn-add {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
+.btn-add:hover {
+  background-color: #7569f8;
+  color: white;
+}/*# sourceMappingURL=Utilities.css.map */

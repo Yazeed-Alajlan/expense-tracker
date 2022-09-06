@@ -1,5 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { FaBars, FaHome, FaLock, FaMoneyBill, FaUser } from "react-icons/fa";
+import {
+  FaBars,
+  FaHome,
+  FaLock,
+  FaMoneyBill,
+  FaUser,
+  FaSignOutAlt,
+} from "react-icons/fa";
 import { BiAnalyse, BiSearch } from "react-icons/bi";
 import { BiCog } from "react-icons/bi";
 import { useState } from "react";
@@ -7,109 +14,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import SidebarMenu from "./SidebarMenu";
 import { useAuth } from "contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { SidebarData } from "./SidebarData";
 import "styles/css/Sidebar.css";
-
-// const routes = [
-//   {
-//     path: "/home",
-//     name: "Home",
-//     icon: <FaHome />,
-//   },
-//   {
-//     path: "/manage",
-//     name: "Manage",
-//     icon: <FaHome />,
-//   },
-//   {
-//     path: "/Analytics",
-//     name: "Analytics",
-//     icon: <BiAnalyse />,
-//   },
-//   {
-//     path: "/users",
-//     name: "Users",
-//     icon: <FaUser />,
-//   },
-//   {
-//     path: "/settings",
-//     name: "Settings",
-//     icon: <BiCog />,
-//     exact: true,
-//     subRoutes: [
-//       {
-//         path: "/settings/profile",
-//         name: "Profile ",
-//         icon: <FaUser />,
-//       },
-//       {
-//         path: "/settings/2fa",
-//         name: "2FA",
-//         icon: <FaLock />,
-//       },
-//       {
-//         path: "/settings/billing",
-//         name: "Billing",
-//         icon: <FaMoneyBill />,
-//       },
-//     ],
-//   },
-//   {
-//     path: "/users",
-//     name: "Users",
-//     icon: <FaUser />,
-//   },
-// ];
-
-const routes = [
-  {
-    path: "/home",
-    name: "Home",
-    icon: <FaHome />,
-  },
-  {
-    path: "/home",
-    name: "Manage",
-    icon: <FaHome />,
-  },
-  {
-    path: "/home",
-    name: "Analytics",
-    icon: <BiAnalyse />,
-  },
-  {
-    path: "/home",
-    name: "Users",
-    icon: <FaUser />,
-  },
-  {
-    path: "/home",
-    name: "Settings",
-    icon: <BiCog />,
-    exact: true,
-    subRoutes: [
-      {
-        path: "/home",
-        name: "Profile ",
-        icon: <FaUser />,
-      },
-      {
-        path: "/home",
-        name: "2FA",
-        icon: <FaLock />,
-      },
-      {
-        path: "/settings",
-        name: "Billing",
-        icon: <FaMoneyBill />,
-      },
-    ],
-  },
-  {
-    path: "/home",
-    name: "Users",
-    icon: <FaUser />,
-  },
-];
 
 const SideBar = ({ children }) => {
   const [error, setError] = useState();
@@ -117,7 +23,7 @@ const SideBar = ({ children }) => {
 
   const { logout } = useAuth();
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
   const handleLogout = async () => {
@@ -152,14 +58,14 @@ const SideBar = ({ children }) => {
       width: 0,
       opacity: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.9,
       },
     },
     show: {
       opacity: 1,
       width: "auto",
       transition: {
-        duration: 0.5,
+        duration: 0.9,
       },
     },
   };
@@ -172,13 +78,13 @@ const SideBar = ({ children }) => {
             width: isOpen ? "200px" : "45px",
 
             transition: {
-              duration: 0.5,
+              duration: 0.9,
               type: "spring",
               damping: 10,
             },
           }}
           // className={`sidebar `}
-          className="sidebar "
+          className="sidebar fixed-top "
         >
           <div className="top_section">
             <AnimatePresence>
@@ -199,7 +105,8 @@ const SideBar = ({ children }) => {
               <FaBars onClick={toggle} />
             </div>
           </div>
-          <div className="search">
+
+          {/* <div className="search">
             <div className="search_icon">
               <BiSearch />
             </div>
@@ -215,9 +122,10 @@ const SideBar = ({ children }) => {
                 />
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
+
           <section className="routes">
-            {routes.map((route, index) => {
+            {SidebarData.map((route, index) => {
               if (route.subRoutes) {
                 return (
                   <SidebarMenu
@@ -252,24 +160,24 @@ const SideBar = ({ children }) => {
               </div>;
             })}
           </section>
-          <div className="bottom_section">
+
+          {/* <div className="bottom_section">
             <AnimatePresence>
               {isOpen && (
-                <motion.h1
+                <motion.div
                   variants={showAnimation}
                   initial="hidden"
                   animate="show"
                   exit="hidden"
-                  className="btn"
-                  onClick={handleLogout}
+                  className="link_text btn btn-primary"
                 >
-                  log out
-                </motion.h1>
+                  Logout
+                </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
         </motion.div>
-        <main>{children}</main>
+        <main className=" bg-light w-100">{children}</main>
       </div>
     </>
   );

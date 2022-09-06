@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Button, Card, Alert, Row } from "react-bootstrap";
+import { Form, Button, Card, Alert } from "react-bootstrap";
 import CenteredContainer from "components/CenteredContainer";
 
 const Login = () => {
@@ -10,7 +10,8 @@ const Login = () => {
 
   const emailRef = useRef();
   const passwordRef = useRef();
-
+  const { logout } = useAuth();
+  logout();
   const { login } = useAuth();
 
   const navigate = useNavigate();

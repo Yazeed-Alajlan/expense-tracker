@@ -1,15 +1,13 @@
-import React from "react";
 import ExpenseCard from "./ExpenseCard";
 
 import { useExpenses } from "contexts/ExpensesContext";
-import { useCategories } from "contexts/CategoriesContext";
-import { Container } from "react-bootstrap";
 
 const Expenses = ({ categoryName, month }) => {
   const { getExpenses } = useExpenses();
+
   return (
-    <Container>
-      {getExpenses().map((expense) => {
+    <>
+      {getExpenses().map((expense, index) => {
         {
           if (
             categoryName == expense.category &&
@@ -17,19 +15,18 @@ const Expenses = ({ categoryName, month }) => {
           ) {
             return (
               <ExpenseCard
+                key={index}
+                id={expense.id}
                 category={expense.category}
                 amount={expense.amount}
                 date={expense.date}
                 notes={expense.notes}
-                // icon={getCategories().map((category) => {
-                //   if (category.name === expense.category) return category.icon;
-                // })}
               />
             );
           }
         }
       })}
-    </Container>
+    </>
   );
 };
 

@@ -1,35 +1,51 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { AuthProvider } from "contexts/AuthContext";
-
+import { useAuth } from "contexts/AuthContext";
 import Login from "pages/Auth/Login";
 import Register from "pages/Auth/Register";
-import Home from "pages/Home/Home";
+import HomePage from "pages/Content/HomePage";
+import ExpensesPage from "pages/Content/ExpensesPage";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
-import SideBar from "components/Sidebar/SideBar";
+import Side from "components/Sidebar/Side";
+import Header from "components/Header/Header";
 
 function App() {
+  const { currentUser } = useAuth();
   return (
-    <Router>
-      <AuthProvider>
-        <Routes>
-          {/* Auth */}
-          <Route exact path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+    <div className="app bg-light">
+      <Router>
+        {currentUser ? (
+          <>
+            <Header />
+            <div className="d-flex">
+              <Side />
+              <Routes>
+                {/* Auth */}
+                <Route exact path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
 
-          {/* Content */}
+                {/* Content */}
 
-          <Route element={<PrivateRoute />}>
-            <Route path="/home" element={<Home />} />
-            {/* <Route path="/manage" element={<ManageHabit />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/settings" element={<Setting />} /> */}
-          </Route>
-        </Routes>
-      </AuthProvider>
-    </Router>
+                <Route element={<PrivateRoute />}>
+                  <Route path="/home" element={<HomePage />} />
+                  <Route path="/expenses" element={<ExpensesPage />} />
+                </Route>
+              </Routes>
+            </div>
+          </>
+        ) : (
+          <>
+            <Routes>
+              {/* Auth */}
+              <Route exact path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </>
+        )}
+      </Router>
+    </div>
   );
 }
 

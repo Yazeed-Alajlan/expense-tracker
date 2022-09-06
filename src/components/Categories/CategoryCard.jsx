@@ -5,6 +5,16 @@ import { FaEllipsisV } from "react-icons/fa";
 import "styles/css/CategoriesAndExpenses.css";
 
 const CategoryCard = ({ name, amount, max, icon }) => {
+  const classNames = [];
+  if (amount > max) {
+    classNames.push(
+      "category-card border-0 rounded-4 shadow-sm",
+      "bg-danger",
+      "bg-opacity-10"
+    );
+  } else {
+    classNames.push("category-card border-0 rounded-4 shadow-sm");
+  }
   function getProgressBarVariant(amount, max) {
     const ratio = amount / max;
     if (ratio < 0.5) return "success";
@@ -14,7 +24,7 @@ const CategoryCard = ({ name, amount, max, icon }) => {
 
   return (
     <>
-      <Card className="category-card border-0 rounded-4 shadow-sm">
+      <Card className={classNames.join(" ")}>
         <Stack direction="column">
           <div className="d-flex justify-content-between align-content-center m-4">
             <div className="category-card-icon d-flex justify-content-center align-items-center ">

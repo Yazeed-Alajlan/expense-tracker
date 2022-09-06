@@ -1,3 +1,11 @@
+.app {
+  background-color: rgb(230, 230, 230);
+}
+
+.sticky-top {
+  top: 3em;
+}
+
 input {
   border: none;
   border-radius: 40px;

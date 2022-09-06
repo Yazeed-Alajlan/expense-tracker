@@ -1,3 +1,19 @@
+.app {
+  background-color: rgb(230, 230, 230);
+}
+
+.sticky-top {
+  top: 3em;
+}
+
+.main-card {
+  background-color: rgba(255, 255, 255, 0.293);
+}
+
+.expense-card-top-section {
+  transition: transform 5s ease-in-out;
+}
+
 .category-card {
   width: 250px;
   height: 300px;
@@ -22,4 +38,8 @@
   border-radius: 50%;
   background-color: rgba(117, 105, 248, 0.3294117647) !important;
   color: #fff;
+}
+
+.expense-card:hover {
+  background-color: rgba(43, 44, 52, 0.0509803922) !important;
 }/*# sourceMappingURL=CategoriesAndExpenses.css.map */
