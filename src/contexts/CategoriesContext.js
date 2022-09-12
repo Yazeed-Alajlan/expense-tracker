@@ -95,13 +95,6 @@ export function CategoriesProvider({ children }) {
       icon: <FaRoute />,
       max: 250,
     },
-    {
-      id: 11,
-      value: "sddsds",
-      name: "Transportation",
-      icon: <FaRoute />,
-      max: 9999,
-    },
   ];
 
   const [categories, setCategories] = useState(categoriesTypes);

@@ -6,10 +6,10 @@ const Header = () => {
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
 
   return (
-    <div className="header d-flex justify-content-evenly align-items-center bg-white shadow-sm fixed-top ">
-      <div className="d-flex justify-content-between">
-        <FaWallet className="fs-2 text-danger" />
-        <p>405</p>
+    <div className="header d-flex justify-content-around align-items-center bg-white shadow-sm fixed-top ">
+      <div className="d-flex justify-content-between align-items-center">
+        <FaWallet className="wallet-icon fs-2" />
+        <div>405</div>
       </div>
       <div>
         <Button variant="add" onClick={() => setShowAddExpenseModal(true)}>

@@ -12,6 +12,12 @@
   color: #7569f8;
 }
 
+.btn-add:focus {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
 .btn-add:hover {
   background-color: #7569f8;
   color: white;

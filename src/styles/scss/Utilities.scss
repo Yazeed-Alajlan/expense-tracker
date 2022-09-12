@@ -25,6 +25,11 @@ $secondary-color: #e45858;
   border: 1px solid $primary-color;
   color: $primary-color;
 }
+.btn-add:focus {
+  background-color: white;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+}
 
 .btn-add:hover {
   background-color: $primary-color;

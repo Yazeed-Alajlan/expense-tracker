@@ -85,28 +85,25 @@ const HomePage = () => {
 
   return (
     <Container className="my-5">
-      <div className="d-flex align-items-center  my-5">
+      <div className="d-flex mt-5 mb-3">
         <div>
-          <h1 className="">Total</h1>
-          <p className="fs-1 fw-bold">{getAllCategoriesAmountByDate(month)}</p>
+          <div className="fs-2 text-muted">Total</div>
+          <div className="fs-1 fw-bold mb-4">
+            {getAllCategoriesAmountByDate(month)}
+          </div>
         </div>
-
-        <Button
-          className="ms-auto"
-          onClick={() => setShowAddExpenseModal(true)}
-        >
-          +
-        </Button>
       </div>
-
-      <input
-        type="month"
-        ref={monthFilterRef}
-        value={month}
-        onChange={handleMonthFilter}
-      />
-
-      <h2>Categories</h2>
+      <div className="d-flex align-items-center mb-2">
+        <div className="fs-2 text-muted">Categories</div>
+        <input
+          style={{ minWidth: "180px" }}
+          className="form-control w-25 ms-auto"
+          type="month"
+          ref={monthFilterRef}
+          value={month}
+          onChange={handleMonthFilter}
+        />
+      </div>
       <CategoriesSlider month={month} />
       <div className="d-flex justify-content-center">
         <div style={{ width: 700 }}>

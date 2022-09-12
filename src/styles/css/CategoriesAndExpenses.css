@@ -6,6 +6,17 @@
   top: 3em;
 }
 
+.btn-add {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
+.btn-add:hover {
+  background-color: #7569f8;
+  color: white;
+}
+
 .main-card {
   background-color: rgba(255, 255, 255, 0.293);
 }

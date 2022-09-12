@@ -6,6 +6,17 @@
   top: 3em;
 }
 
+.btn-add {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
+.btn-add:hover {
+  background-color: #7569f8;
+  color: white;
+}
+
 /* Sidebar */
 .header {
   background: rgb(27, 33, 75);
@@ -37,4 +48,8 @@
 .sidebar .active {
   border-right: 4px solid rgb(230, 230, 230);
   color: #7569f8;
+}
+
+.wallet-icon {
+  color: #9c6f44;
 }/*# sourceMappingURL=Sidebar.css.map */
