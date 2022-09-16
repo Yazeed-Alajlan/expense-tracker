@@ -3,11 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useAuth } from "contexts/AuthContext";
 import Login from "pages/Auth/Login";
 import Register from "pages/Auth/Register";
-import HomePage from "pages/Content/HomePage";
-import ExpensesPage from "pages/Content/ExpensesPage";
+import HomePage from "pages/Pages/HomePage";
+
+import ExpensesPage from "pages/Pages/ExpensesPage";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
-import Side from "components/Sidebar/Side";
+import StatisticsPage from "pages/Pages/StatisticsPage";
+import Side from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
+import SideOld from "components/Sidebar/SideOld";
 
 function App() {
   const { currentUser } = useAuth();
@@ -16,22 +19,25 @@ function App() {
       <Router>
         {currentUser ? (
           <>
-            <Header />
-            <div className="d-flex">
+            <div className="d-flex ">
+              <SideOld />
               <Side />
-              <Routes>
-                {/* Auth */}
-                <Route exact path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
+              <div className="d-flex flex-column w-100 ">
+                <Header />
+                <Routes>
+                  <Route exact path="/" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
 
-                {/* Content */}
+                  {/* Content */}
 
-                <Route element={<PrivateRoute />}>
-                  <Route path="/home" element={<HomePage />} />
-                  <Route path="/expenses" element={<ExpensesPage />} />
-                </Route>
-              </Routes>
+                  <Route element={<PrivateRoute />}>
+                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/expenses" element={<ExpensesPage />} />
+                    <Route path="/statistics" element={<StatisticsPage />} />
+                  </Route>
+                </Routes>
+              </div>
             </div>
           </>
         ) : (

@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { db } from "firebase.js";
-
+import { useAuth } from "contexts/AuthContext";
 // import { collection, addDoc, getDocs, where, query } from "firebase/firestore";
 
 const useFirestore = (collection) => {
   const [docs, setDocs] = useState([]);
+  const currentUser = useAuth().currentUser;
 
   useEffect(() => {
     const unsub = db
       .collection(collection)
-      //   .orderBy("createdAt", "desc")
+      // .orderBy("createdAt", "desc")
       .onSnapshot((snap) => {
         let documents = [];
         snap.forEach((doc) => {
-          documents.push({ ...doc.data(), id: doc.id });
+          if (doc.data().uid === currentUser.uid)
+            documents.push({ ...doc.data(), id: doc.id });
         });
         setDocs(documents);
       });

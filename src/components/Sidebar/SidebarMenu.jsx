@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import "styles/css/Sidebar.css";
 
 const menuAnimation = {
   hidden: {

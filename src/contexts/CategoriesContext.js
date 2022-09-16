@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { db } from "firebase.js";
+import { currentMonth } from "data/MonthData";
 import { useExpenses } from "./ExpensesContext";
 import { collection, addDoc } from "firebase/firestore";
 import {
@@ -98,7 +99,9 @@ export function CategoriesProvider({ children }) {
   ];
 
   const [categories, setCategories] = useState(categoriesTypes);
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const { getExpenses } = useExpenses();
+  const [isOpen, setIsOpen] = useState(false);
 
   function getCategories() {
     return categories;
@@ -118,10 +121,10 @@ export function CategoriesProvider({ children }) {
     );
   }
   function getAllCategoriesAmountByDate(date) {
+    console.log(date);
     const amount = getExpenses()
       .filter((expense) => expense.date.substring(0, 7) === date)
       .reduce((total, expense) => total + expense.amount, 0);
-
     return amount;
   }
 
@@ -134,6 +137,30 @@ export function CategoriesProvider({ children }) {
       });
       amountList.push(sum);
     });
+    return amountList;
+  }
+  function getAllCategoriesAmountByDateSortedByMonth() {
+    var month = [
+      new Date().getFullYear() + "-01",
+      new Date().getFullYear() + "-02",
+      new Date().getFullYear() + "-03",
+      new Date().getFullYear() + "-04",
+      new Date().getFullYear() + "-05",
+      new Date().getFullYear() + "-06",
+      new Date().getFullYear() + "-07",
+      new Date().getFullYear() + "-08",
+      new Date().getFullYear() + "-09",
+      new Date().getFullYear() + "-10",
+      new Date().getFullYear() + "-11",
+      new Date().getFullYear() + "-12",
+    ];
+    const amountList = [];
+
+    month.map((mon) => {
+      const amount = getAllCategoriesAmountByDate(mon);
+      amountList.push(amount);
+    });
+    console.log(amountList);
     return amountList;
   }
 
@@ -159,6 +186,11 @@ export function CategoriesProvider({ children }) {
     getAllCategoriesAmountByDate,
     getAllCategoriesMaximum,
     getAllCategoriesAmountByDateSortedByCategory,
+    getAllCategoriesAmountByDateSortedByMonth,
+    selectedMonth,
+    setSelectedMonth,
+    setIsOpen,
+    isOpen,
   };
 
   return (

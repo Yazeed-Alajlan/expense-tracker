@@ -19,8 +19,8 @@ export const SidebarData = [
     icon: <FaMoneyBill />,
   },
   {
-    path: "/Analytics",
-    name: "Analytics",
+    path: "/statistics",
+    name: "Statistics",
     icon: <FaHome />,
   },
   {

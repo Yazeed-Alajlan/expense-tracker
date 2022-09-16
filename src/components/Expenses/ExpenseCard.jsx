@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import "styles/css/CategoriesAndExpenses.css";
 import { motion } from "framer-motion";
 import { useExpenses } from "contexts/ExpensesContext";
 import { Card, Button } from "react-bootstrap";
 import { FaRegTrashAlt, FaRegEdit, FaRegTimesCircle } from "react-icons/fa";
 import { AnimatePresence } from "framer-motion";
-import "styles/css/CategoriesAndExpenses.css";
 import DeleteExpenseModal from "./DeleteExpenseModal";
 import EditExpenseModal from "./EditExpenseModal";
 const ExpenseCard = ({ id, category, amount, date, notes }) => {
@@ -45,7 +43,7 @@ const ExpenseCard = ({ id, category, amount, date, notes }) => {
     <motion.div layout>
       <Card className="expense-card border-0 border-top rounded-4 shadow-sm p-3 ">
         {selectedExpenseId === id ? (
-          <motion.div layout="position">
+          <motion.div>
             <Card.Title className="expense-card-top-section d-flex justify-content-between">
               <div>
                 <Button
@@ -86,7 +84,10 @@ const ExpenseCard = ({ id, category, amount, date, notes }) => {
               setSelectedExpenseId(id);
             }}
           >
-            <div className="d-flex justify-content-between align-items-center ">
+            <motion.div
+              layout="position"
+              className="d-flex justify-content-between align-items-center "
+            >
               <div className="d-flex gap-3">
                 <div className=" display-5">{date.substring(8, 10)}</div>
                 <div className="d-flex justify-content-center align-items-center ">
@@ -96,7 +97,7 @@ const ExpenseCard = ({ id, category, amount, date, notes }) => {
                 </div>
               </div>
               <div className="fs-3 text-danger">-{amount}</div>
-            </div>
+            </motion.div>
           </Card.Body>
         </motion.div>
 

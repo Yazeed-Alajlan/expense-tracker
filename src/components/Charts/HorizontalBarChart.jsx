@@ -1,9 +1,11 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
-const BarChart = ({ chartData }) => {
+
+const HorizontalBarChart = ({ chartData }) => {
   const colorCode = "#777";
   const options = {
+    indexAxis: "y",
     responsive: true,
     plugins: {
       legend: {
@@ -35,4 +37,4 @@ const BarChart = ({ chartData }) => {
   return <Bar type={"bar"} data={chartData} options={options} />;
 };
 
-export default BarChart;
+export default HorizontalBarChart;

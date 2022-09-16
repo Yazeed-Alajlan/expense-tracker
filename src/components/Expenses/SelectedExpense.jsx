@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
 import { FaRegTrashAlt, FaRegEdit, FaRegTimesCircle } from "react-icons/fa";
-import "styles/css/CategoriesAndExpenses.css";
 import { useExpenses } from "contexts/ExpensesContext";
 import DeleteExpenseModal from "./DeleteExpenseModal";
 import EditExpenseModal from "./EditExpenseModal";

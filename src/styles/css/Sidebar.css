@@ -3,10 +3,18 @@
 }
 
 .sticky-top {
-  top: 3em;
+  top: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .btn-add {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
+.btn-add:focus {
   background-color: white;
   border: 1px solid #7569f8;
   color: #7569f8;
@@ -21,11 +29,12 @@
 .header {
   background: rgb(27, 33, 75);
   height: 60px;
-  width: 100%;
+  width: 100vw;
 }
 
 .bars {
   color: rgb(90, 90, 90);
+  display: none;
 }
 
 .sidebar {
@@ -33,6 +42,9 @@
   color: white;
   height: 100vh;
   width: 100px;
+}
+.sidebar-content {
+  margin-top: 60px !important;
 }
 .sidebar-link {
   color: rgb(90, 90, 90);
@@ -52,4 +64,19 @@
 
 .wallet-icon {
   color: #9c6f44;
+}
+
+@media screen and (max-width: 826px) {
+  .sidebar {
+    display: none;
+  }
+  .wallet-icon {
+    display: none;
+  }
+  .wallet-value {
+    display: none;
+  }
+  .bars {
+    display: block;
+  }
 }/*# sourceMappingURL=Sidebar.css.map */

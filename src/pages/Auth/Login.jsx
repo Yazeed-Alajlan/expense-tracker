@@ -27,6 +27,7 @@ const Login = () => {
     } catch (error) {
       setError("Failed to log in");
     }
+    setLoading(false);
   };
 
   return (

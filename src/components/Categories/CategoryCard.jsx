@@ -2,7 +2,6 @@ import Expenses from "components/Expenses/Expenses";
 import React from "react";
 import { Card, Stack, ProgressBar } from "react-bootstrap";
 import { FaEllipsisV } from "react-icons/fa";
-import "styles/css/CategoriesAndExpenses.css";
 
 const CategoryCard = ({ name, amount, max, icon }) => {
   const classNames = [];
