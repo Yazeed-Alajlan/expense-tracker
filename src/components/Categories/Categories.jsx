@@ -10,9 +10,10 @@ const Categories = ({ month }) => {
           (total, expense) => total + expense.amount,
           0
         );
+
         return (
           <CategoryCard
-            key={i}
+            key={category.id}
             name={category.name}
             amount={amount}
             max={category.max}

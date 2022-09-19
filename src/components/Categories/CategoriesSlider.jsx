@@ -25,14 +25,14 @@ const CategoriesSlider = ({ month }) => {
             0
           );
           return (
-            <SplideSlide key={category.id}>
+            <SplideSlide key={i}>
               <CategoryCard
-                key={i}
+                key={category.id}
+                id={category.id}
                 name={category.name}
                 amount={amount}
                 max={category.max}
                 icon={category.icon}
-                iconName={category.iconName}
               />
             </SplideSlide>
           );

@@ -1,9 +1,12 @@
-import Expenses from "components/Expenses/Expenses";
-import React from "react";
-import { Card, Stack, ProgressBar } from "react-bootstrap";
+import { useState } from "react";
+import { Card, Stack, ProgressBar, Dropdown } from "react-bootstrap";
 import { FaEllipsisV } from "react-icons/fa";
+import DeleteCategoryModal from "./DeleteCategoryModal";
+import EditCategoryModal from "./EditCategoryModal";
 
-const CategoryCard = ({ name, amount, max, icon, iconName }) => {
+const CategoryCard = ({ name, amount, max, icon, id }) => {
+  const [showDeleteCategoryModal, setShowDeleteCategoryModal] = useState(false);
+  const [showEditCategoryModal, setShowEditCategoryModal] = useState(false);
   const classNames = [];
   if (amount > max) {
     classNames.push(
@@ -28,7 +31,28 @@ const CategoryCard = ({ name, amount, max, icon, iconName }) => {
             <div className="category-card-icon d-flex justify-content-center align-items-center ">
               <p className="fs-1 ">{icon}</p>
             </div>
-            <FaEllipsisV className="my-4" />
+            <Dropdown className="my-4">
+              <Dropdown.Toggle id="dropdown-basic">
+                <FaEllipsisV />
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item
+                  onClick={() => {
+                    setShowEditCategoryModal(true);
+                  }}
+                >
+                  Edit
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setShowDeleteCategoryModal(true);
+                  }}
+                >
+                  Delete
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
 
           <div className="card-content m-4">
@@ -46,6 +70,18 @@ const CategoryCard = ({ name, amount, max, icon, iconName }) => {
           />
         </Stack>
       </Card>
+      <DeleteCategoryModal
+        categorId={id}
+        show={showDeleteCategoryModal}
+        handleClose={() => setShowDeleteCategoryModal(false)}
+      />
+      <EditCategoryModal
+        categorId={id}
+        name={name}
+        max={max}
+        show={showEditCategoryModal}
+        handleClose={() => setShowEditCategoryModal(false)}
+      />
     </>
   );
 };

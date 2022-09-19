@@ -15,7 +15,6 @@ export default function EditExpenseModal({
   notes,
 }) {
   const { getCategories, getCategoryByName } = useCategories();
-  const { getExpenseById, setSelectedExpense } = useExpenses();
   const [selectedOption, setSelectedOption] = useState();
 
   const amountRef = useRef();

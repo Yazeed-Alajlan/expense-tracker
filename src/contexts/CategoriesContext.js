@@ -20,8 +20,9 @@ export function useCategories() {
 }
 
 export function CategoriesProvider({ children }) {
-  const { docs } = useFirestore("categories");
   const currentUser = useAuth().currentUser;
+
+  const { docs } = useFirestore("categories");
 
   const [categories, setCategories] = useState(docs);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
@@ -129,15 +130,14 @@ export function CategoriesProvider({ children }) {
       createdAt: new Date().toISOString(),
     });
   }
-  async function deleteCategory(expenseId) {
-    return await deleteDoc(doc(db, "expenses", expenseId));
+  async function deleteCategory(categoryId) {
+    return await deleteDoc(doc(db, "categories", categoryId));
   }
-  async function updateCategory(category, amount, date, notes, expenseId) {
-    return await updateDoc(doc(db, "expenses", expenseId), {
-      category: category,
-      amount: amount,
-      date: date,
-      notes: notes,
+  async function updateCategory(name, max, iconName, categoryId) {
+    return await updateDoc(doc(db, "categories", categoryId), {
+      name: name,
+      max: max,
+      iconName: iconName,
     });
   }
 

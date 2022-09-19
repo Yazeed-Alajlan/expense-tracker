@@ -1,9 +1,9 @@
 import { Modal, Button } from "react-bootstrap";
-import { useExpenses } from "contexts/ExpensesContext";
+import { useCategories } from "contexts/CategoriesContext";
 import { FaRegTimesCircle } from "react-icons/fa";
 
-export default function DeleteExpenseModal({ show, handleClose, expenseId }) {
-  const { deleteExpense } = useExpenses();
+const DeleteCategoryModal = ({ show, handleClose, categorId }) => {
+  const { deleteCategory } = useCategories();
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -12,14 +12,14 @@ export default function DeleteExpenseModal({ show, handleClose, expenseId }) {
         <FaRegTimesCircle className=" display-1 text-danger border-1" />
         <h2>Are you sure?</h2>
         <p className="text-center text-muted mx-4">
-          Do you really want to delete this expense? This process cannot be
+          Do you really want to delete this category? This process cannot be
           undone.
         </p>
         {/* <Button variant="secondary">Cancel</Button> */}
         <Button
           variant="danger"
           onClick={() => {
-            deleteExpense(expenseId);
+            deleteCategory(categorId);
           }}
         >
           Delete
@@ -27,4 +27,6 @@ export default function DeleteExpenseModal({ show, handleClose, expenseId }) {
       </Modal.Body>
     </Modal>
   );
-}
+};
+
+export default DeleteCategoryModal;

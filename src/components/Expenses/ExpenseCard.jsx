@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useExpenses } from "contexts/ExpensesContext";
 import { Card, Button } from "react-bootstrap";
 import { FaRegTrashAlt, FaRegEdit, FaRegTimesCircle } from "react-icons/fa";
-import { AnimatePresence } from "framer-motion";
 import DeleteExpenseModal from "./DeleteExpenseModal";
 import EditExpenseModal from "./EditExpenseModal";
 const ExpenseCard = ({ id, category, amount, date, notes }) => {
