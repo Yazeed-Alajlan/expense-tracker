@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { SidebarData } from "./SidebarData";
 
-const Side = () => {
+const Sidebar = () => {
   const { logout } = useAuth();
 
   const handleLogout = async () => {
@@ -35,4 +35,4 @@ const Side = () => {
   );
 };
 
-export default Side;
+export default Sidebar;
