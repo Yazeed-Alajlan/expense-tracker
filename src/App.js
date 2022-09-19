@@ -8,7 +8,7 @@ import HomePage from "pages/Pages/HomePage";
 import ExpensesPage from "pages/Pages/ExpensesPage";
 import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import StatisticsPage from "pages/Pages/StatisticsPage";
-import Side from "components/Sidebar/Sidebar";
+import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
 import SideOld from "components/Sidebar/SideOld";
 
@@ -21,7 +21,7 @@ function App() {
           <>
             <div className="d-flex ">
               <SideOld />
-              <Side />
+              <Sidebar />
               <div className="d-flex flex-column w-100 ">
                 <Header />
                 <Routes>
