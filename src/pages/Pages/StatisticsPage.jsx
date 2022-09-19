@@ -104,13 +104,13 @@ const StatisticsPage = () => {
         </div>
       </div> */}
       <Row>
-        <Col xs="12" xm="6" xl="6" lg={6} md={12}>
+        <Col lg={6}>
           <div className="card border-0 rounded-4 shadow-sm  mb-5">
             <h1 className="text-muted text-center fs-3">Monthly Spending</h1>
             <HorizontalBarChart chartData={horizontalBarChartData} />
           </div>
         </Col>
-        <Col xs="12" xm="6" xl="6" lg={6} md={12}>
+        <Col lg={6}>
           <div className="card border-0 rounded-4 shadow-sm  mb-5">
             <h1 className="text-muted text-center fs-3">Spending by Day</h1>
             <BarChart chartData={barChartData} />
@@ -118,7 +118,7 @@ const StatisticsPage = () => {
         </Col>
       </Row>
       <Row className="mb-5">
-        <Col xs="12" xm="6" xl="6" lg={6} md={12}>
+        <Col lg={6}>
           <div className="card border-0 rounded-4 shadow-sm mb-5">
             <h1 className="text-muted text-center fs-3">
               Expenses by Category

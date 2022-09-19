@@ -3,7 +3,7 @@ import React from "react";
 import { Card, Stack, ProgressBar } from "react-bootstrap";
 import { FaEllipsisV } from "react-icons/fa";
 
-const CategoryCard = ({ name, amount, max, icon }) => {
+const CategoryCard = ({ name, amount, max, icon, iconName }) => {
   const classNames = [];
   if (amount > max) {
     classNames.push(
@@ -20,7 +20,6 @@ const CategoryCard = ({ name, amount, max, icon }) => {
     if (ratio < 0.75) return "warning";
     return "danger";
   }
-
   return (
     <>
       <Card className={classNames.join(" ")}>

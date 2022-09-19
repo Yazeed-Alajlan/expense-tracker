@@ -1,22 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
-import { db } from "firebase.js";
 import { currentMonth } from "data/MonthData";
 import { useExpenses } from "./ExpensesContext";
-import { collection, addDoc } from "firebase/firestore";
+import { useAuth } from "./AuthContext";
+import useFirestore from "hooks/useFirestore";
+import { icons, categoriesTypes } from "data/Data";
+import { db } from "firebase.js";
 import {
-  FaUtensils,
-  FaHamburger,
-  FaCoffee,
-  FaShoppingCart,
-  FaReceipt,
-  FaTv,
-  FaGasPump,
-  FaShoppingBag,
-  FaTshirt,
-  FaRoute,
-  FaHeartbeat,
-  FaHome,
-} from "react-icons/fa";
+  collection,
+  addDoc,
+  doc,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
 const CategoriesContext = React.createContext();
 const categoriesRef = collection(db, "categories");
 
@@ -25,83 +20,40 @@ export function useCategories() {
 }
 
 export function CategoriesProvider({ children }) {
-  const categoriesTypes = [
-    {
-      id: 1,
-      value: "Resturansts",
-      name: "Resturansts",
-      icon: <FaUtensils />,
-      max: 500,
-    },
-    {
-      id: 2,
-      value: "Fast Food",
-      name: "Fast Food",
-      icon: <FaHamburger />,
-      max: 300,
-    },
-    {
-      id: 3,
-      value: "Coffee",
-      name: "Coffee",
-      icon: <FaCoffee />,
-      max: 400,
-    },
-    {
-      id: 4,
-      value: "Grocery",
-      name: "Grocery",
-      icon: <FaShoppingCart />,
-      max: 600,
-    },
-    {
-      id: 5,
-      value: "Bills",
-      name: "Bills",
-      icon: <FaReceipt />,
-      max: 1000,
-    },
-    {
-      id: 6,
-      value: "TV",
-      name: "TV",
-      icon: <FaTv />,
-      max: 250,
-    },
-    {
-      id: 7,
-      value: "Gas",
-      name: "Gas",
-      icon: <FaGasPump />,
-      max: 250,
-    },
-    {
-      id: 8,
-      value: "Cloths",
-      name: "Cloths",
-      icon: <FaTshirt />,
-      max: 500,
-    },
-    {
-      id: 9,
-      value: "Shopping",
-      name: "Shopping",
-      icon: <FaShoppingBag />,
-      max: 1000,
-    },
-    {
-      id: 10,
-      value: "Transportation",
-      name: "Transportation",
-      icon: <FaRoute />,
-      max: 250,
-    },
-  ];
+  const { docs } = useFirestore("categories");
+  const currentUser = useAuth().currentUser;
 
-  const [categories, setCategories] = useState(categoriesTypes);
+  const [categories, setCategories] = useState(docs);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
+  const [counter, setCounter] = useState(0);
   const { getExpenses } = useExpenses();
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setCategories(docs);
+  }, [docs]);
+
+  useEffect(() => {
+    setCounter(1 + counter);
+    if (counter !== 0 && categories.length == 0) {
+      categoriesTypes.forEach((category) => {
+        addCategory(
+          category.name,
+          category.max,
+          category.iconName,
+          currentUser.uid
+        );
+      });
+    }
+    if (counter !== 0) {
+      docs.forEach((category) => {
+        // category.icon = <FaTshirt />;
+        category.icon = categoriesTypes.map((icon) => {
+          if (icon.iconName === category.iconName) return icon.icon;
+        });
+      });
+    }
+  }, [categories]);
 
   function getCategories() {
     return categories;
@@ -121,7 +73,6 @@ export function CategoriesProvider({ children }) {
     );
   }
   function getAllCategoriesAmountByDate(date) {
-    console.log(date);
     const amount = getExpenses()
       .filter((expense) => expense.date.substring(0, 7) === date)
       .reduce((total, expense) => total + expense.amount, 0);
@@ -169,14 +120,26 @@ export function CategoriesProvider({ children }) {
     return categoriesTypes.reduce((total, category) => total + category.max, 0);
   }
 
-  // async function addCategory(name, max, uid) {
-  //   await addDoc(categoriesRef, {
-  //     name,
-  //     max,
-  //     uid,
-  //     createdAt: new Date().toISOString(),
-  //   });
-  // }
+  async function addCategory(name, max, iconName, uid) {
+    await addDoc(categoriesRef, {
+      name,
+      max,
+      uid,
+      iconName,
+      createdAt: new Date().toISOString(),
+    });
+  }
+  async function deleteCategory(expenseId) {
+    return await deleteDoc(doc(db, "expenses", expenseId));
+  }
+  async function updateCategory(category, amount, date, notes, expenseId) {
+    return await updateDoc(doc(db, "expenses", expenseId), {
+      category: category,
+      amount: amount,
+      date: date,
+      notes: notes,
+    });
+  }
 
   const value = {
     getCategories,
@@ -191,6 +154,9 @@ export function CategoriesProvider({ children }) {
     setSelectedMonth,
     setIsOpen,
     isOpen,
+    addCategory,
+    deleteCategory,
+    updateCategory,
   };
 
   return (

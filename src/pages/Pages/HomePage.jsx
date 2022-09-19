@@ -3,13 +3,13 @@ import { useCategories } from "contexts/CategoriesContext";
 import { useExpenses } from "contexts/ExpensesContext";
 
 import CategoriesSlider from "components/Categories/CategoriesSlider";
-import PieChart from "components/Charts/PieChart";
-import BarChart from "components/Charts/BarChart";
-
-import { Container } from "react-bootstrap";
+import AddCategoryModal from "components/Categories/AddCategoryModal";
+import { Button, Container } from "react-bootstrap";
 import "styles/css/CategoriesAndExpenses.css";
 
 const HomePage = () => {
+  const [showAddCategoryModal, setShowAddCategoryModal] = useState(false);
+
   const {
     getAllCategoriesAmountByDate,
     getCategories,
@@ -42,7 +42,7 @@ const HomePage = () => {
     <Container className="my-5 d-flex flex-column">
       <div className="d-flex mb-3">
         <div>
-          <div className="fs-2 text-muted">Total</div>
+          <h2 className="fs-2 text-muted">Total</h2>
           <div className="fs-1 fw-bold mb-4">
             {getAllCategoriesAmountByDate(selectedMonth)}
           </div>
@@ -50,7 +50,10 @@ const HomePage = () => {
       </div>
 
       <div>
-        <div className="fs-2 text-muted">Categories</div>
+        <div className="d-flex gap-4 mb-2">
+          <h2 className="fs-2 text-muted">Categories</h2>
+          <Button onClick={() => setShowAddCategoryModal(true)}>add</Button>
+        </div>
         <CategoriesSlider month={selectedMonth} />
       </div>
       {/* <div>
@@ -61,6 +64,10 @@ const HomePage = () => {
           </div>
         </div>
       </div> */}
+      <AddCategoryModal
+        show={showAddCategoryModal}
+        handleClose={() => setShowAddCategoryModal(false)}
+      />
     </Container>
   );
 };
