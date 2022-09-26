@@ -8,21 +8,8 @@
   padding: 0;
 }
 
-.btn-add {
-  background-color: white;
-  border: 1px solid #7569f8;
-  color: #7569f8;
-}
-
-.btn-add:focus {
-  background-color: white;
-  border: 1px solid #7569f8;
-  color: #7569f8;
-}
-
-.btn-add:hover {
+.dropdown-item.active, .dropdown-item:active {
   background-color: #7569f8;
-  color: white;
 }
 
 .main-card {
@@ -43,6 +30,9 @@
   border-radius: 50%;
   background-color: rgba(117, 105, 248, 0.3294117647) !important;
   color: #fff;
+}
+.category-card .dropdown-toggle::after {
+  display: none !important;
 }
 
 .category-card-flat .category-card-icon {

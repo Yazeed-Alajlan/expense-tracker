@@ -31,12 +31,12 @@ const CategoryCard = ({ name, amount, max, icon, id }) => {
             <div className="category-card-icon d-flex justify-content-center align-items-center ">
               <p className="fs-1 ">{icon}</p>
             </div>
-            <Dropdown className="my-4">
-              <Dropdown.Toggle id="dropdown-basic">
+            <Dropdown className="my-3" >
+              <Dropdown.Toggle  variant="no-focus" className="card-dropdown bg-white border-0 text-black"  id="dropdown-basic">
                 <FaEllipsisV />
               </Dropdown.Toggle>
 
-              <Dropdown.Menu>
+              <Dropdown.Menu variant="success">
                 <Dropdown.Item
                   onClick={() => {
                     setShowEditCategoryModal(true);

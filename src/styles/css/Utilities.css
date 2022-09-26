@@ -21,6 +21,19 @@
 }
 
 .btn-add:hover {
+  background-color: #7569f8 !important;
+  color: white !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
   background-color: #7569f8;
-  color: white;
-}/*# sourceMappingURL=Utilities.css.map */
+}
+
+.btn-main {
+  background-color: #7569f8;
+  color: #fff;
+}
+.btn-main:hover {
+  background-color: #7569f8 !important;
+  color: #fff !important;
+}

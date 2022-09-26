@@ -94,7 +94,7 @@ export default function EditExpenseModal({
             <Form.Control ref={notesRef} defaultValue={notes} type="text" />
           </Form.Group>
           <div className="d-flex justify-content-end">
-            <Button variant="primary" type="submit">
+            <Button variant="main" type="submit">
               Edit
             </Button>
           </div>

@@ -131,7 +131,6 @@ export const icons = [
     id: 7,
     iconName: "FaGasPump",
     icon: <FaGasPump />,
-    max: 250,
   },
   {
     id: 8,

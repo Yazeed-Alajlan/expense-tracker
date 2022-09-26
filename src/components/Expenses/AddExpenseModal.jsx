@@ -75,7 +75,7 @@ export default function AddExpenseModal({ show, handleClose }) {
             <Form.Control ref={notesRef} type="text" />
           </Form.Group>
           <div className="d-flex justify-content-end">
-            <Button variant="primary" type="submit">
+            <Button variant="main" type="submit">
               Add
             </Button>
           </div>

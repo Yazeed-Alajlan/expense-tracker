@@ -5,6 +5,7 @@ import {
   FaUser,
   FaSignOutAlt,
   FaBars,
+  FaRegChartBar,
 } from "react-icons/fa";
 
 export const SidebarData = [
@@ -21,7 +22,7 @@ export const SidebarData = [
   {
     path: "/statistics",
     name: "Statistics",
-    icon: <FaHome />,
+    icon: <FaRegChartBar />,
   },
   {
     path: "/users",

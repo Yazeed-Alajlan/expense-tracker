@@ -26,7 +26,7 @@ const EditCategoryModal = ({ show, handleClose, categorId, max, name }) => {
     <Modal show={show} onHide={handleClose}>
       <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
-          <Modal.Title>New Category</Modal.Title>
+          <Modal.Title>Edit Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form.Group className="mb-3" controlId="name">
@@ -69,8 +69,8 @@ const EditCategoryModal = ({ show, handleClose, categorId, max, name }) => {
             />
           </Form.Group>
           <div className="d-flex justify-content-end">
-            <Button variant="primary" type="submit">
-              Add
+            <Button variant="main" type="submit">
+              Edit
             </Button>
           </div>
         </Modal.Body>

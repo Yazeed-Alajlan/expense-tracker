@@ -3,9 +3,9 @@ import { db } from "firebase.js";
 import { useAuth } from "contexts/AuthContext";
 // import { collection, addDoc, getDocs, where, query } from "firebase/firestore";
 
-const useFirestore = (collection) => {
+const useFirestore = (collection) => {  const currentUser = useAuth().currentUser;
+
   const [docs, setDocs] = useState([]);
-  const currentUser = useAuth().currentUser;
 
   useEffect(() => {
     const unsub = db

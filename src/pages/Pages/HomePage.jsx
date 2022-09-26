@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useCategories } from "contexts/CategoriesContext";
 import { useExpenses } from "contexts/ExpensesContext";
-
 import CategoriesSlider from "components/Categories/CategoriesSlider";
 import AddCategoryModal from "components/Categories/AddCategoryModal";
 import { Button, Container } from "react-bootstrap";
-import "styles/css/CategoriesAndExpenses.css";
-
+import {
+  FaPlus
+} from "react-icons/fa";
 const HomePage = () => {
   const [showAddCategoryModal, setShowAddCategoryModal] = useState(false);
 
@@ -52,7 +52,7 @@ const HomePage = () => {
       <div>
         <div className="d-flex gap-4 mb-2">
           <h2 className="fs-2 text-muted">Categories</h2>
-          <Button onClick={() => setShowAddCategoryModal(true)}>add</Button>
+          <Button className=" rounded-circle text-black " variant="outline-light" onClick={() => setShowAddCategoryModal(true)}><FaPlus/></Button>
         </div>
         <CategoriesSlider month={selectedMonth} />
       </div>
