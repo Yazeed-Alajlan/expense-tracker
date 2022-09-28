@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { db } from "firebase.js";
 import { useAuth } from "contexts/AuthContext";
+import { icons, categoriesTypes } from "data/Data";
+
 // import { collection, addDoc, getDocs, where, query } from "firebase/firestore";
 
-const useFirestore = (collection) => {  const currentUser = useAuth().currentUser;
+const useFirestore = (collection) => {
+  const currentUser = useAuth().currentUser;
 
   const [docs, setDocs] = useState([]);
 
@@ -22,7 +25,7 @@ const useFirestore = (collection) => {  const currentUser = useAuth().currentUse
     return () => unsub();
     // this is a cleanup function that react will run when
     // a component using the hook unmounts
-  }, []);
+  }, [currentUser]);
 
   // const currentUser = useAuth().currentUser;
   // const todosRef = collection(db, "todos");
@@ -42,6 +45,18 @@ const useFirestore = (collection) => {  const currentUser = useAuth().currentUse
   // useEffect(() => {
   //   fetchTodos();
   // }, []);
+  if (collection === "categories") {
+    docs.forEach((category) => {
+      // category.icon = <FaTshirt />;
+      icons.map((icon) => {
+        if (icon.iconName === category.iconName) {
+          category.icon = icon.icon;
+          return;
+        }
+      });
+    });
+  }
+  console.log(collection);
 
   return { docs };
 };

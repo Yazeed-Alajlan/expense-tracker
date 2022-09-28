@@ -1,11 +1,22 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
 import { icons } from "data/Data";
 import { useCategories } from "contexts/CategoriesContext";
 import Select from "react-select";
 
-const EditCategoryModal = ({ show, handleClose, categorId, max, name }) => {
-  const [selectedOption, setSelectedOption] = useState();
+const EditCategoryModal = ({
+  show,
+  handleClose,
+  categorId,
+  max,
+  name,
+  iconName,
+  icon,
+}) => {
+  const [selectedOption, setSelectedOption] = useState({
+    icon: icon,
+    iconName: iconName,
+  });
 
   const nameRef = useRef();
   const maxRef = useRef();
@@ -22,6 +33,13 @@ const EditCategoryModal = ({ show, handleClose, categorId, max, name }) => {
 
     handleClose();
   }
+  useEffect(() => {
+    setSelectedOption({
+      icon: icon,
+      iconName: iconName,
+    });
+  }, [show]);
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Form onSubmit={handleSubmit}>
@@ -47,13 +65,12 @@ const EditCategoryModal = ({ show, handleClose, categorId, max, name }) => {
               value={selectedOption}
               options={icons}
               onChange={(e) => {
-                console.log(e);
                 setSelectedOption(e);
               }}
               getOptionLabel={(e) => (
                 <div className="fs-2 text-center">{e.icon}</div>
               )}
-              getOptionValue={(option) => option.id} // changes here!!!
+              getOptionValue={(option) => option.iconName} // changes here!!!
             />
           </Form.Group>
 

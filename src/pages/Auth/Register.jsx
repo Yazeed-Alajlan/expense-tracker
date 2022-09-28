@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useAuth } from "contexts/AuthContext";
+import { useCategories } from "contexts/CategoriesContext";
 import "styles/css/Auth.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,6 +16,7 @@ const Register = () => {
   const { logout } = useAuth();
   logout();
   const { register } = useAuth();
+  const { addDefualtCategories } = useCategories();
 
   const navigate = useNavigate();
 
@@ -28,6 +30,7 @@ const Register = () => {
       setError("");
       setLoading(true);
       await register(emailRef.current.value, passwordRef.current.value);
+      addDefualtCategories();
       navigate("/home");
     } catch (error) {
       console.log(error.message);

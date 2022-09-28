@@ -33,6 +33,7 @@ const CategoriesSlider = ({ month }) => {
                 amount={amount}
                 max={category.max}
                 icon={category.icon}
+                iconName={category.iconName}
               />
             </SplideSlide>
           );

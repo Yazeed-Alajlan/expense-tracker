@@ -26,35 +26,13 @@ export function CategoriesProvider({ children }) {
 
   const [categories, setCategories] = useState(docs);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-  const [counter, setCounter] = useState(0);
   const { getExpenses } = useExpenses();
+
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setCategories(docs);
-  }, [docs]);
-
-  useEffect(() => {
-    setCounter(1 + counter);
-    if (counter !== 0 && categories.length == 0) {
-      categoriesTypes.forEach((category) => {
-        addCategory(
-          category.name,
-          category.max,
-          category.iconName,
-          currentUser.uid
-        );
-      });
-    }
-    if (counter !== 0) {
-      docs.forEach((category) => {
-        // category.icon = <FaTshirt />;
-        category.icon = categoriesTypes.map((icon) => {
-          if (icon.iconName === category.iconName) return icon.icon;
-        });
-      });
-    }
-  }, [categories]);
+  }, [docs, currentUser]);
 
   function getCategories() {
     return categories;
@@ -92,7 +70,7 @@ export function CategoriesProvider({ children }) {
     return amountList;
   }
   function getAllCategoriesAmountByDateSortedByMonth() {
-    var month = [
+    var months = [
       new Date().getFullYear() + "-01",
       new Date().getFullYear() + "-02",
       new Date().getFullYear() + "-03",
@@ -108,8 +86,8 @@ export function CategoriesProvider({ children }) {
     ];
     const amountList = [];
 
-    month.map((mon) => {
-      const amount = getAllCategoriesAmountByDate(mon);
+    months.map((month) => {
+      const amount = getAllCategoriesAmountByDate(month);
       amountList.push(amount);
     });
     console.log(amountList);
@@ -118,9 +96,19 @@ export function CategoriesProvider({ children }) {
 
   // DATE
   function getAllCategoriesMaximum() {
-    return categoriesTypes.reduce((total, category) => total + category.max, 0);
+    return getCategories().reduce((total, category) => total + category.max, 0);
   }
 
+  async function addDefualtCategories() {
+    categoriesTypes.forEach((category) => {
+      addCategory(
+        category.name,
+        category.max,
+        category.iconName,
+        currentUser.uid
+      );
+    });
+  }
   async function addCategory(name, max, iconName, uid) {
     await addDoc(categoriesRef, {
       name,

@@ -4,19 +4,14 @@ import { FaEllipsisV } from "react-icons/fa";
 import DeleteCategoryModal from "./DeleteCategoryModal";
 import EditCategoryModal from "./EditCategoryModal";
 
-const CategoryCard = ({ name, amount, max, icon, id }) => {
+const CategoryCard = ({ name, amount, max, icon, id, iconName }) => {
   const [showDeleteCategoryModal, setShowDeleteCategoryModal] = useState(false);
   const [showEditCategoryModal, setShowEditCategoryModal] = useState(false);
   const classNames = [];
   if (amount > max) {
-    classNames.push(
-      "category-card border-0 rounded-4 shadow-sm",
-      "bg-danger",
-      "bg-opacity-10"
-    );
-  } else {
-    classNames.push("category-card border-0 rounded-4 shadow-sm");
+    classNames.push("bg-danger", "bg-opacity-10");
   }
+
   function getProgressBarVariant(amount, max) {
     const ratio = amount / max;
     if (ratio < 0.5) return "success";
@@ -25,18 +20,26 @@ const CategoryCard = ({ name, amount, max, icon, id }) => {
   }
   return (
     <>
-      <Card className={classNames.join(" ")}>
+      <Card
+        className={
+          "category-card border-0 rounded-4 shadow-sm " + classNames.join(" ")
+        }
+      >
         <Stack direction="column">
           <div className="d-flex justify-content-between align-content-center m-4">
             <div className="category-card-icon d-flex justify-content-center align-items-center ">
               <p className="fs-1 ">{icon}</p>
             </div>
-            <Dropdown className="my-3" >
-              <Dropdown.Toggle  variant="no-focus" className="card-dropdown bg-white border-0 text-black"  id="dropdown-basic">
+            <Dropdown className="my-3">
+              <Dropdown.Toggle
+                variant="no-focus"
+                className="card-dropdown bg-transparent border-0 text-black"
+                id="dropdown-basic"
+              >
                 <FaEllipsisV />
               </Dropdown.Toggle>
 
-              <Dropdown.Menu variant="success">
+              <Dropdown.Menu>
                 <Dropdown.Item
                   onClick={() => {
                     setShowEditCategoryModal(true);
@@ -79,6 +82,8 @@ const CategoryCard = ({ name, amount, max, icon, id }) => {
         categorId={id}
         name={name}
         max={max}
+        icon={icon}
+        iconName={iconName}
         show={showEditCategoryModal}
         handleClose={() => setShowEditCategoryModal(false)}
       />

@@ -17,7 +17,6 @@ const Categories = ({ month }) => {
             name={category.name}
             amount={amount}
             max={category.max}
-            icon={category.icon}
           />
         );
       })}
