@@ -35,15 +35,31 @@ $secondary-color: #e45858;
 .btn-add:hover {
   background-color: $primary-color !important;
   color: white !important;
-
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.dropdown-item.active,
+.dropdown-item:active {
   background-color: $primary-color;
 }
 
-.btn-main{
-  background-color: $primary-color;
+// .btn-main {
+//   color: white;
+//   background-color: $primary-color;
+// }
+// .btn-main:hover {
+//   color: white;
 
+//   background-color: $primary-color;
+//   border-color: $primary-color;
+// }
+
+.btn-primary {
+  color: #fff;
+  background-color: $primary-color !important;
+  border-color: $primary-color !important;
 }
 
+.btn-primary:focus {
+  outline: none;
+  box-shadow: none;
+}

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "contexts/AuthContext";
 import { useCategories } from "contexts/CategoriesContext";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert, Row, Col } from "react-bootstrap";
 import CenteredContainer from "components/Utils/CenteredContainer";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -41,71 +41,74 @@ const Register = () => {
 
   return (
     <CenteredContainer>
-      <Card className="border-0 rounded-4 shadow-sm d-flex flex-row justify-content-between p-5">
-        <div className="left-section ">
-          <Card.Title>
-            <h1 className="text-center mb-2 ">Sign up to XXXXX</h1>
-          </Card.Title>
-          <Card.Body>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <Form onSubmit={handleSubmit}>
-              <Form.Group className="form-input mb-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="text"
-                  ref={emailRef}
-                  id="email"
-                  placeholder="Email"
-                  maxLength="100"
-                  required
-                />
+      <Card className="border-0 rounded-4 shadow-sm">
+        <Row>
+          <Col>
+            <div className="right-section">
+              <Form.Group>
+                <h1 className="signup-title text-center ">New Here?</h1>
+                <p className="text-center">Sign up! </p>
+                <Link className="signup-btn btn text-center py-1" to="/login">
+                  Sign Up
+                </Link>
               </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  ref={passwordRef}
-                  id="password"
-                  placeholder="Password"
-                  maxLength="128"
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Confirm Password</Form.Label>
-                <Form.Control
-              type="password"
-              ref={passwordConfirmationRef}
-              id="passwordConfirmation"
-              placeholder="Confirm Password"
-              maxLength="128"
-              required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-           
+            </div>
+          </Col>
 
-                <Button
-                  variant="main"
-                  className="w-100"
-                  disabled={loading}
-                  type="submit"
-                >
-                  Creat an Account
-                </Button>
-              </Form.Group>
-            </Form>
-          </Card.Body>
-        </div>
-        <div className="right-section">
-          <Form.Group>
-            <h1 className="signup-title text-center ">New Here?</h1>
-            <p className="text-center">Sign up! </p>
-            <Link className="signup-btn btn text-center py-1" to="/login">
-              Sign Up
-            </Link>
-          </Form.Group>
-        </div>
+          <Col>
+            <Card.Title>
+              <h1 className="text-center mb-2 ">Sign up to XXXXX</h1>
+            </Card.Title>
+            <Card.Body>
+              {error && <Alert variant="danger">{error}</Alert>}
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="form-input mb-3">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="text"
+                    ref={emailRef}
+                    id="email"
+                    placeholder="Email"
+                    maxLength="100"
+                    required
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    ref={passwordRef}
+                    id="password"
+                    placeholder="Password"
+                    maxLength="128"
+                    required
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Confirm Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    ref={passwordConfirmationRef}
+                    id="passwordConfirmation"
+                    placeholder="Confirm Password"
+                    maxLength="128"
+                    required
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Button
+                    variant="primary"
+                    className="w-100"
+                    disabled={loading}
+                    type="submit"
+                  >
+                    Creat an Account
+                  </Button>
+                </Form.Group>
+              </Form>
+            </Card.Body>
+          </Col>
+        </Row>
       </Card>
     </CenteredContainer>
 

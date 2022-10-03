@@ -86,7 +86,7 @@ const EditCategoryModal = ({
             />
           </Form.Group>
           <div className="d-flex justify-content-end">
-            <Button variant="main" type="submit">
+            <Button variant="primary" type="submit">
               Edit
             </Button>
           </div>

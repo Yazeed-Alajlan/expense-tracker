@@ -3,18 +3,18 @@ import { useAuth } from "contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import CenteredContainer from "components/Utils/CenteredContainer";
+import ForgotPasswordModal from "./ForgotPasswordModal";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showForogtPasswordModal, setShowForogtPasswordModal] = useState(false);
 
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { logout } = useAuth();
-  logout();
-  const { login } = useAuth();
-
+  const { logout, login } = useAuth();
   const navigate = useNavigate();
+  logout();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,62 +32,62 @@ const Login = () => {
 
   return (
     <CenteredContainer>
-      <Card className="border-0 rounded-4 shadow-sm d-flex flex-row justify-content-between p-5">
-        <div className="left-section ">
-          <Card.Title>
-            <h1 className="text-center mb-2 ">Login to Your Account</h1>
-          </Card.Title>
-          <Card.Body>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <Form onSubmit={handleSubmit}>
-              <Form.Group className="form-input mb-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  ref={emailRef}
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Enter password"
-                  ref={passwordRef}
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="mb-3">
-                <div className="mb-3">
-                  <label className="me-2" htmlFor="">
-                    Remember me
-                  </label>
-                  <input type="checkbox" />
-                </div>
-
+      <Card className="border-0 shadow-sm ">
+        <Card.Title>
+          <h1 className="text-center mb-2 ">Login to Your Account</h1>
+        </Card.Title>
+        <Card.Body>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="form-input mb-3 ">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                ref={emailRef}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                ref={passwordRef}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="d-flex justify-content-between">
+              <Form.Check type="checkbox" label="Remember me" />
+              <a href="#" onClick={() => setShowForogtPasswordModal(true)}>
+                Forgot Password
+              </a>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <div className="d-flex justify-content-center">
                 <Button
-                  variant="main"
-                  className="w-100"
+                  variant="primary"
+                  className="w-100 w-lg-50"
                   disabled={loading}
                   type="submit"
                 >
                   Log In
                 </Button>
-              </Form.Group>
-            </Form>
-          </Card.Body>
-        </div>
-        <div className="right-section">
-          <Form.Group>
-            <h1 className="signup-title text-center ">New Here?</h1>
-            <p className="text-center">Sign up! </p>
-            <Link className="signup-btn btn text-center py-1" to="/register">
-              Sign Up
-            </Link>
-          </Form.Group>
-        </div>
+              </div>
+            </Form.Group>
+            <Form.Group className="d-flex justify-content-center ">
+              <p className="me-2"> Don't have an account? </p>
+              <Link className="" to="/register">
+                Create One
+              </Link>
+            </Form.Group>
+          </Form>
+        </Card.Body>
       </Card>
+      <ForgotPasswordModal
+        show={showForogtPasswordModal}
+        handleClose={() => setShowForogtPasswordModal(false)}
+      />
     </CenteredContainer>
   );
 };

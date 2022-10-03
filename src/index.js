@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "styles/css/Size.css";
+import "styles/css/Auth.css";
 import "styles/css/Utilities.css";
 import "styles/css/Sidebar.css";
 import "@splidejs/react-splide/css";

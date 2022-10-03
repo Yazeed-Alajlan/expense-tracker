@@ -8,11 +8,44 @@
   padding: 0;
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.btn-add {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
+.btn-add:focus {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
+.btn-add:hover {
+  background-color: #7569f8 !important;
+  color: white !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
   background-color: #7569f8;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #7569f8 !important;
+  border-color: #7569f8 !important;
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 input {
   border: none;
   border-radius: 40px;
+}
+
+.login-right-section {
+  background-color: rgba(117, 105, 248, 0.3294117647) !important;
 }/*# sourceMappingURL=Auth.css.map */

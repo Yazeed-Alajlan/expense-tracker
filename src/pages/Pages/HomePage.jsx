@@ -10,7 +10,6 @@ const HomePage = () => {
   const { getAllCategoriesAmountByDate, getCategories, selectedMonth } =
     useCategories();
 
-  useEffect(() => {}, []);
   return (
     <Container className="my-5 d-flex flex-column">
       <div className="d-flex mb-3">

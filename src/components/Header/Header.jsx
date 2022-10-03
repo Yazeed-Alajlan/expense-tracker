@@ -49,7 +49,10 @@ const Header = () => {
           />
         </div>
         <div>
-          <Button variant="add" onClick={() => setShowAddExpenseModal(true)}>
+          <Button
+            variant="primary"
+            onClick={() => setShowAddExpenseModal(true)}
+          >
             Add Expenses
           </Button>
         </div>

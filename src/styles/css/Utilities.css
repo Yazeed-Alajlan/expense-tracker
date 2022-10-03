@@ -25,15 +25,18 @@
   color: white !important;
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.dropdown-item.active,
+.dropdown-item:active {
   background-color: #7569f8;
 }
 
-.btn-main {
-  background-color: #7569f8;
+.btn-primary {
   color: #fff;
-}
-.btn-main:hover {
   background-color: #7569f8 !important;
-  color: #fff !important;
+  border-color: #7569f8 !important;
 }
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: none;
+}/*# sourceMappingURL=Utilities.css.map */

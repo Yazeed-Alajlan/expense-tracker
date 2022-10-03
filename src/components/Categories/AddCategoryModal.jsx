@@ -64,7 +64,7 @@ const AddCategoryModal = ({ show, handleClose }) => {
             />
           </Form.Group>
           <div className="d-flex justify-content-end">
-            <Button variant="main" type="submit">
+            <Button variant="primary" type="submit">
               Add
             </Button>
           </div>

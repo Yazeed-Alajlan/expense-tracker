@@ -1,14 +1,30 @@
 import { useState, useEffect } from "react";
 import { db } from "firebase.js";
 import { useAuth } from "contexts/AuthContext";
-import { icons, categoriesTypes } from "data/Data";
-
-// import { collection, addDoc, getDocs, where, query } from "firebase/firestore";
+import { icons } from "data/Data";
 
 const useFirestore = (collection) => {
   const currentUser = useAuth().currentUser;
 
   const [docs, setDocs] = useState([]);
+
+  // const [data, setData] = useState([]);
+  // const getData = async () => {
+  //   await db
+  //     .collection(collection)
+  //     .get()
+  //     .then((querySnapshot) => {
+  //       // Loop through the data and store
+  //       // it in array to display
+  //       querySnapshot.forEach((element) => {
+  //         if (element.data().uid === currentUser.uid)
+  //           setData((arr) => [...arr, element.data()]);
+  //       });
+  //     });
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     const unsub = db
@@ -27,24 +43,6 @@ const useFirestore = (collection) => {
     // a component using the hook unmounts
   }, [currentUser]);
 
-  // const currentUser = useAuth().currentUser;
-  // const todosRef = collection(db, "todos");
-
-  // const fetchTodos = async () => {
-  //   const q = query(todosRef, where("uid", "==", currentUser.uid));
-
-  //   const querySnapshot = await getDocs(q);
-  //   let todosArray = [];
-
-  //   querySnapshot.forEach((doc) => {
-  //     todosArray.push(doc.data());
-  //   });
-  //   setTodosList(todosArray);
-  // };
-
-  // useEffect(() => {
-  //   fetchTodos();
-  // }, []);
   if (collection === "categories") {
     docs.forEach((category) => {
       // category.icon = <FaTshirt />;
@@ -56,7 +54,6 @@ const useFirestore = (collection) => {
       });
     });
   }
-  console.log(collection);
 
   return { docs };
 };
