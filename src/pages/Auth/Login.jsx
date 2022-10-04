@@ -32,14 +32,16 @@ const Login = () => {
 
   return (
     <CenteredContainer>
-      <Card className="border-0 shadow-sm ">
+      <Card className="border-0 shadow-sm p-4">
         <Card.Title>
           <h1 className="text-center mb-2 ">Login to Your Account</h1>
         </Card.Title>
+        <hr />
+
         <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="form-input mb-3 ">
+            <Form.Group className=" mb-3">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -57,23 +59,21 @@ const Login = () => {
                 required
               />
             </Form.Group>
-            <Form.Group className="d-flex justify-content-between">
+            <Form.Group className="d-flex justify-content-between mb-3">
               <Form.Check type="checkbox" label="Remember me" />
               <a href="#" onClick={() => setShowForogtPasswordModal(true)}>
                 Forgot Password
               </a>
             </Form.Group>
-            <Form.Group className="mb-3">
-              <div className="d-flex justify-content-center">
-                <Button
-                  variant="primary"
-                  className="w-100 w-lg-50"
-                  disabled={loading}
-                  type="submit"
-                >
-                  Log In
-                </Button>
-              </div>
+            <Form.Group className="d-flex justify-content-center mb-3 ">
+              <Button
+                variant="primary"
+                className="w-100 w-lg-75"
+                disabled={loading}
+                type="submit"
+              >
+                Log In
+              </Button>
             </Form.Group>
             <Form.Group className="d-flex justify-content-center ">
               <p className="me-2"> Don't have an account? </p>

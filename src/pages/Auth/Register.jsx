@@ -41,74 +41,64 @@ const Register = () => {
 
   return (
     <CenteredContainer>
-      <Card className="border-0 rounded-4 shadow-sm">
-        <Row>
-          <Col>
-            <div className="right-section">
-              <Form.Group>
-                <h1 className="signup-title text-center ">New Here?</h1>
-                <p className="text-center">Sign up! </p>
-                <Link className="signup-btn btn text-center py-1" to="/login">
-                  Sign Up
-                </Link>
-              </Form.Group>
-            </div>
-          </Col>
+      <Card className="border-0 rounded-4 shadow-sm p-4">
+        <Card.Title>
+          <h1 className="text-center mb-2 ">Create New Account!</h1>
+        </Card.Title>
+        <hr />
+        <Card.Body>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="form-input mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="text"
+                ref={emailRef}
+                id="email"
+                placeholder="Email"
+                maxLength="100"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                ref={passwordRef}
+                id="password"
+                placeholder="Password"
+                maxLength="128"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                ref={passwordConfirmationRef}
+                id="passwordConfirmation"
+                placeholder="Confirm Password"
+                maxLength="128"
+                required
+              />
+            </Form.Group>
+            <Form.Group className="d-flex justify-content-center mb-3">
+              <Button
+                variant="primary"
+                className="w-100 w-lg-75"
+                disabled={loading}
+                type="submit"
+              >
+                Creat an Account
+              </Button>
+            </Form.Group>
 
-          <Col>
-            <Card.Title>
-              <h1 className="text-center mb-2 ">Sign up to XXXXX</h1>
-            </Card.Title>
-            <Card.Body>
-              {error && <Alert variant="danger">{error}</Alert>}
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="form-input mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="text"
-                    ref={emailRef}
-                    id="email"
-                    placeholder="Email"
-                    maxLength="100"
-                    required
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    ref={passwordRef}
-                    id="password"
-                    placeholder="Password"
-                    maxLength="128"
-                    required
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label>Confirm Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    ref={passwordConfirmationRef}
-                    id="passwordConfirmation"
-                    placeholder="Confirm Password"
-                    maxLength="128"
-                    required
-                  />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Button
-                    variant="primary"
-                    className="w-100"
-                    disabled={loading}
-                    type="submit"
-                  >
-                    Creat an Account
-                  </Button>
-                </Form.Group>
-              </Form>
-            </Card.Body>
-          </Col>
-        </Row>
+            <Form.Group className="d-flex justify-content-center ">
+              <p className="me-2">Already has an account? </p>
+              <Link to="/login">Login</Link>
+            </Form.Group>
+          </Form>
+        </Card.Body>
       </Card>
     </CenteredContainer>
 
