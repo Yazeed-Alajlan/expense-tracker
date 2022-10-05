@@ -46,6 +46,9 @@ input {
   border-radius: 40px;
 }
 
-.login-right-section {
-  background-color: rgba(117, 105, 248, 0.3294117647) !important;
+.layer1 {
+  background-image: url("../stacked-waves-haikei.svg");
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
 }/*# sourceMappingURL=Auth.css.map */

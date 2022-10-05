@@ -6,6 +6,50 @@ input {
   //   background-color: Utilities.$primary-color-light !important;
 }
 
-.login-right-section {
-  background-color: Utilities.$primary-color-light !important;
+.layer1 {
+  background-image: url("../stacked-waves-haikei.svg");
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
 }
+
+// section {
+//   position: relative !important;
+//   display: flex !important;
+//   flex-direction: column !important;
+//   align-items: center !important;
+//   min-height: 400px !important;
+//   padding-top: 100px !important;
+//   background: #3c31dd !important;
+// }
+
+// .curve {
+//   position: absolute !important;
+//   height: 250px !important;
+//   width: 100% !important;
+//   bottom: 0 !important;
+//   text-align: center !important;
+// }
+
+// .curve::before {
+//   content: "" !important;
+//   display: block !important;
+//   position: absolute !important;
+//   border-radius: 100% 50% !important;
+//   width: 55% !important;
+//   height: 100% !important;
+//   transform: translate(85%, 60%) !important;
+//   background-color: hsl(216, 21%, 16%) !important;
+// }
+
+// .curve::after {
+//   content: "" !important;
+//   display: block !important;
+//   position: absolute !important;
+//   border-radius: 100% 50% !important;
+//   width: 55% !important;
+//   height: 100% !important;
+//   background-color: #3c31dd !important;
+//   transform: translate(-4%, 40%) !important;
+//   z-index: -1 !important;
+// }

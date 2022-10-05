@@ -15,7 +15,7 @@ import SidebarMobile from "components/Sidebar/SidebarMobile";
 function App() {
   const { currentUser } = useAuth();
   return (
-    <div className="app bg-light">
+    <div className="app bg-light ">
       <Router>
         {currentUser ? (
           <>
