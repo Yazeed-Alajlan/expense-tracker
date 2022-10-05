@@ -4,7 +4,7 @@ import { FaWallet } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 import AddExpenseModal from "components/Expenses/AddExpenseModal";
-import SideOld from "components/Sidebar/SideOld";
+import SideOld from "components/Sidebar/SidebarMobile";
 const Header = () => {
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const monthFilterRef = useRef();

@@ -10,7 +10,7 @@ import PrivateRoute from "components/PrivateRoute/PrivateRoute";
 import StatisticsPage from "pages/Pages/StatisticsPage";
 import Sidebar from "components/Sidebar/Sidebar";
 import Header from "components/Header/Header";
-import SideOld from "components/Sidebar/SideOld";
+import SidebarMobile from "components/Sidebar/SidebarMobile";
 
 function App() {
   const { currentUser } = useAuth();
@@ -20,7 +20,7 @@ function App() {
         {currentUser ? (
           <>
             <div className="d-flex ">
-              <SideOld />
+              <SidebarMobile />
               <Sidebar />
               <div className="d-flex flex-column w-100 ">
                 <Header />
