@@ -1,50 +1,64 @@
+.app {
+  background-color: rgb(230, 230, 230);
+}
+
+.sticky-top {
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-add {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
+.btn-add:focus {
+  background-color: white;
+  border: 1px solid #7569f8;
+  color: #7569f8;
+}
+
+.btn-add:hover {
+  background-color: #7569f8 !important;
+  color: white !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #7569f8;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #7569f8 !important;
+  border-color: #7569f8 !important;
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 /* Sidebar */
 .sidebar-mobile {
   display: none;
-  background: rgb(0, 7, 61);
+  background-color: #50499c;
   color: white;
   height: 100vh;
   overflow-y: auto;
-}
-
-.top_section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 10px;
-}
-
-.logo {
-  font-size: 18px;
-  line-height: 0;
-}
-
-.bars {
-  width: 30px;
 }
 
 .hide {
   display: none;
 }
 
-.routes {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
 .link-mobile {
-  display: flex;
-  color: white;
-  gap: 10px;
-  padding: 5px 10px;
-  border-right: 4px solid transparent;
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .link-mobile:hover {
-  border-right: 4px solid white;
   background: rgb(45, 51, 89);
   transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }

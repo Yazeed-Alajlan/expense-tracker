@@ -1,17 +1,7 @@
 import { NavLink } from "react-router-dom";
-import {
-  FaBars,
-  FaHome,
-  FaLock,
-  FaMoneyBill,
-  FaUser,
-  FaSignOutAlt,
-} from "react-icons/fa";
-import { BiAnalyse, BiSearch } from "react-icons/bi";
-import { BiCog } from "react-icons/bi";
+import { FaBars } from "react-icons/fa";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import SidebarMenu from "./SidebarMenu";
 import { useAuth } from "contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
@@ -84,8 +74,8 @@ const SideOld = () => {
           }}
           className="sidebar-mobile fixed-top "
         >
-          <div className="top_section">
-            <AnimatePresence>
+          <div className="d-flex justify-content-end align-items-center p-3">
+            {/* <AnimatePresence>
               {isOpen && (
                 <motion.h1
                   variants={showAnimation}
@@ -97,9 +87,9 @@ const SideOld = () => {
                   DoSomeCoding
                 </motion.h1>
               )}
-            </AnimatePresence>
+            </AnimatePresence> */}
 
-            <div className="">
+            <div className="fs-3">
               <FaBars onClick={toggle} />
             </div>
           </div>
@@ -120,11 +110,15 @@ const SideOld = () => {
               )}
             </AnimatePresence>
           </div> */}
-          <section className="routes">
+          <section className=" d-flex flex-column gap-1 ">
             {SidebarData.map((route, index) => {
               return (
-                <NavLink to={route.path} key={index} className="link-mobile">
-                  <div className="icon">{route.icon}</div>
+                <NavLink
+                  to={route.path}
+                  key={index}
+                  className="d-flex align-items-center gap-2 p-2 fs-2 text-white text-decoration-none border-end-2 link-mobile"
+                >
+                  <div className="fs-4">{route.icon}</div>
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
@@ -132,7 +126,7 @@ const SideOld = () => {
                         initial="hidden"
                         animate="show"
                         exit="hidden"
-                        className="link_text"
+                        className="fs-4"
                       >
                         {route.name}
                       </motion.div>
