@@ -23,14 +23,26 @@ const StatisticsPage = () => {
         data: getAllCategoriesAmountByDateSortedByCategory(selectedMonth),
 
         backgroundColor: [
-          "#4263cb",
-          "#67801f",
-          "#50AF95",
-          "#f3ba2f",
-          "#6e7f3b",
-          "#6f4f61",
-          "#b1b38b",
-          "#543608",
+          "rgb(111, 78, 55)",
+          "rgb(50, 205, 50)",
+          "rgb(255, 223, 70)",
+          "#fff",
+          "rgb(255,97,29)",
+          "rgb(199, 175, 118)",
+          "rgb(201, 203, 207)",
+          "rgb(70, 68, 93)",
+
+          "rgb(255, 99, 132)",
+          "rgb(75, 192, 192)",
+
+          // "#6f4e37",
+          // "#67801f",
+          // "#35350f",
+          // "#f3ba2f",
+          // "#982121	",
+          // "#6f4f61",
+          // "#b1b38b",
+          // "#543608",
         ],
         borderColor: "grey",
         borderWidth: 0.5,
@@ -117,7 +129,7 @@ const StatisticsPage = () => {
           </div>
         </Col>
       </Row>
-      <Row className="mb-5">
+      <Row className="mb-5 justify-content-center">
         <Col lg={6}>
           <div className="card border-0 rounded-4 shadow-sm mb-5">
             <h1 className="text-muted text-center fs-3">
