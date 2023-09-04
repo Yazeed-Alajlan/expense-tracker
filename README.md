@@ -1,3 +1,24 @@
+
+![image](https://github.com/Yazeed-Alajlan/expense-tracker/assets/108052070/266d8bb7-f44e-48b2-87a5-fae75b78ae0c)
+
+![image](https://github.com/Yazeed-Alajlan/expense-tracker/assets/108052070/4ba7a22f-df4a-4e4d-8396-61fc23b917b8)
+
+![image](https://github.com/Yazeed-Alajlan/expense-tracker/assets/108052070/2c1e49fb-b99e-452d-b33a-a4ce816f27de)
+
+![image](https://github.com/Yazeed-Alajlan/expense-tracker/assets/108052070/f5d15790-0e3d-4a8c-8895-90175384a18f)
+
+![image](https://github.com/Yazeed-Alajlan/expense-tracker/assets/108052070/0ac6e7ce-86cb-4373-91bd-becb9d6aff94)
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
